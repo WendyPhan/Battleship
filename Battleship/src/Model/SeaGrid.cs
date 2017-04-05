@@ -23,17 +23,25 @@ public class SeaGrid : ISeaGrid
 	private Dictionary<ShipName, Ship> _Ships;
 
 	private int _ShipsKilled = 0;
-	/// <summary>
-	/// The sea grid has changed and should be redrawn.
-	/// </summary>
-	public event EventHandler ISeaGrid.Changed;
+    /// <summary>
+    /// The sea grid has changed and should be redrawn.
+    /// </summary>
+    public event EventHandler ISeaGrid.Changed
+    {
+        add
+        {
+        }
+        remove
+        {
+        }
+    }
 
-	/// <summary>
-	/// The width of the sea grid.
-	/// </summary>
-	/// <value>The width of the sea grid.</value>
-	/// <returns>The width of the sea grid.</returns>
-	public int Width {
+    /// <summary>
+    /// The width of the sea grid.
+    /// </summary>
+    /// <value>The width of the sea grid.</value>
+    /// <returns>The width of the sea grid.</returns>
+    public int Width {
 		get { return _WIDTH; }
 	}
 

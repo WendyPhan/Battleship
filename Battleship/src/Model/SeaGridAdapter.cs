@@ -56,15 +56,22 @@ public class SeaGridAdapter : ISeaGrid
 		}
 	}
 
-	/// <summary>
-	/// Indicates that the grid has been changed
-	/// </summary>
-	public event EventHandler ISeaGrid.Changed;
-
-	/// <summary>
-	/// Get the width of a tile
-	/// </summary>
-	public int Width {
+    /// <summary>
+    /// Indicates that the grid has been changed
+    /// </summary>
+    public event EventHandler ISeaGrid.Changed
+    {
+        add
+        {
+        }
+        remove
+        {
+        }
+    }
+    /// <summary>
+    /// Get the width of a tile
+    /// </summary>
+    public int Width {
 		get { return _MyGrid.Width; }
 	}
 
