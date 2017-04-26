@@ -76,6 +76,9 @@ public static class GameController
 
 		//create the players
 		switch (_aiSetting) {
+            case AIOption.Easy:
+                _ai = new AIEasyPlayer(_theGame);
+                break;
 			case AIOption.Medium:
 				_ai = new AIMediumPlayer(_theGame);
 				break;
@@ -83,7 +86,7 @@ public static class GameController
 				_ai = new AIHardPlayer(_theGame);
 				break;
 			default:
-				_ai = new AIHardPlayer(_theGame);
+				_ai = new AIEasyPlayer(_theGame);
 				break;
 		}
 
@@ -156,8 +159,10 @@ public static class GameController
 
 		if (isHuman) {
 			UtilityFunctions.Message = "You " + result.ToString();
+            UtilityFunctions.Turn = "AI Turn";
 		} else {
 			UtilityFunctions.Message = "The AI " + result.ToString();
+            UtilityFunctions.Turn = "Player Turn";
 		}
 
 		switch (result.Value) {
@@ -171,7 +176,7 @@ public static class GameController
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
 				while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink"))) {
-					SwinGame.Delay(10);
+					//SwinGame.Delay(10);
 					SwinGame.RefreshScreen();
 				}
 
