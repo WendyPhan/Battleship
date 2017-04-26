@@ -215,13 +215,30 @@ static class UtilityFunctions
 		set { _message = value; }
 	}
 
-	/// <summary>
-	/// Draws the message to the screen
-	/// </summary>
-	public static void DrawMessage()
+    private static string _turn;
+    /// <summary>
+    /// The message to display
+    /// </summary>
+    /// <value>The message to display</value>
+    /// <returns>The message to display</returns>
+    public static string Turn
+    {
+        get { return _turn; }
+        set { _turn = value; }
+    }
+
+    /// <summary>
+    /// Draws the message to the screen
+    /// </summary>
+    public static void DrawMessage()
 	{
 		SwinGame.DrawText(Message, MESSAGE_COLOR, GameResources.GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP);
 	}
+
+    public static void DrawPlayerTurn()
+    {
+        SwinGame.DrawText(Turn, MESSAGE_COLOR, GameResources.GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP + 15);
+    }
 
 	/// <summary>
 	/// Draws the background for the current state of the game
