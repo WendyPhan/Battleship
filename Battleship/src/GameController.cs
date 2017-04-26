@@ -154,13 +154,15 @@ public static class GameController
 		bool isHuman = false;
 		isHuman = object.ReferenceEquals(_theGame.Player, HumanPlayer);
 
-		if (isHuman) {
-			UtilityFunctions.Message = "You " + result.ToString();
-		} else {
+        if (isHuman) {
+            UtilityFunctions.Message = "You " + result.ToString();
+            UtilityFunctions.Turn = "AI Turn";  
+        } else {
 			UtilityFunctions.Message = "The AI " + result.ToString();
-		}
+            UtilityFunctions.Turn = "Your Turn";
+        }
 
-		switch (result.Value) {
+        switch (result.Value) {
 			case ResultOfAttack.Destroyed:
 				PlayHitSequence(result.Row, result.Column, isHuman);
 				Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
@@ -222,7 +224,7 @@ public static class GameController
 	public static void Attack(int row, int col)
 	{
 		AttackResult result = default(AttackResult);
-		result = _theGame.Shoot(row, col);
+        result = _theGame.Shoot(row, col);
 		CheckAttackResult(result);
 	}
 
