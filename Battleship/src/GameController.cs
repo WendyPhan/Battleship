@@ -159,11 +159,26 @@ public static class GameController
 
 		if (isHuman) {
 			UtilityFunctions.Message = "You " + result.ToString();
-            UtilityFunctions.Turn = "AI Turn";
+            if (UtilityFunctions.Message == "You missed")
+            {
+                UtilityFunctions.Turn = "AI Turn";
+            }
+            else
+            {
+                UtilityFunctions.Turn = "Your Turn";
+            }
+            
 		} else {
 			UtilityFunctions.Message = "The AI " + result.ToString();
-            UtilityFunctions.Turn = "Player Turn";
-		}
+            if (UtilityFunctions.Message == "The AI missed")
+            {
+                UtilityFunctions.Turn = "Your Turn";
+            }
+            else
+            {
+                UtilityFunctions.Turn = "AI Turn";
+            }
+        }
 
 		switch (result.Value) {
 			case ResultOfAttack.Destroyed:
